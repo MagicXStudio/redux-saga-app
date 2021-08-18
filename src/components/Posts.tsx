@@ -1,6 +1,6 @@
 ﻿import * as React from 'react'
 import { Post } from '../models/Post'
-
+import {Tag} from 'antd'
 type Props = {
     posts: Array<Post>
 }
@@ -16,7 +16,7 @@ export default class Posts extends React.Component<Props, State> {
     render() {
         return (
             <div>
-                <span>{this.state.time.toLocaleDateString()}</span>
+                <Tag>{this.state.time.toLocaleDateString()}</Tag>
                 <ul>
                     {this.props.posts.map((post: Post, index: number) => <li key={index} onClick={() => { alert(this) }} ><span>{post.title} </span></li>)}
                 </ul>

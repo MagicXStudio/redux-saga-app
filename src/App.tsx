@@ -1,6 +1,9 @@
 import logo from './logo.svg';
 import News from './components/News'
 import './App.css';
+import {of} from 'rxjs'
+import {Button,Tag} from 'antd'
+import 'antd/dist/antd.css'
 
 function App() {
     return (
@@ -9,7 +12,7 @@ function App() {
                 <img src={logo} className="App-logo" alt="logo" />
                 <News />
                 <span>
-                    <span>Learn </span>
+                    <Tag>Learn </Tag>
                     <a
                         className="App-link"
                         href="https://reactjs.org/"
@@ -44,6 +47,10 @@ function App() {
                     >
                         React Redux
           </a>
+          <Button type='primary' onClick={()=>{
+              let x=of(123);
+              console.log(x);
+          }}>hello rxjs</Button>
                 </span>
             </header>
         </div>
