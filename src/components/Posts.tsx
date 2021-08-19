@@ -1,14 +1,22 @@
 ﻿import * as React from 'react'
 import { Post } from '../models/Post'
+import { connect } from 'react-redux'
 import { Tag, Table, Space, Button } from 'antd'
+import Details from './Details'
 type Props = {
-    posts: Array<Post>
+    posts: Array<Post>,
+    dispatch: Function
 }
 type State = {
     count: number,
     time: Date
 }
 const columns = [
+    {
+        title: 'id',
+        dataIndex: 'id',
+        key: 'id',
+    },
     {
         title: 'title',
         dataIndex: 'title',
@@ -30,23 +38,35 @@ const columns = [
         key: 'action',
         render: (text: string, record: Post) => (
             <Space size="middle">
-                <Button onClick={() => { alert(this); }}>Details</Button>
+                <Button onClick={(e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+                    console.log(e);
+                }}>Details</Button>
                 <Button onClick={() => { alert(record.title) }}>Delete</Button>
             </Space>
         ),
     },
 ];
-export default class Posts extends React.Component<Props, State> {
+class Posts extends React.Component<Props, State> {
     readonly state: State = {
         count: 0,
         time: new Date()
     };
+    constructor(props: Props) {
+        super(props);
+        this.onShowDetails.bind(this);
+    }
+    onShowDetails() {
+        this.props.dispatch({})
+    }
     render() {
         return (
             <div>
-                <Table dataSource={this.props.posts} columns={columns} />;
+                <Table dataSource={this.props.posts} columns={columns} rowKey="id" />;
+                <Details item={this.props.posts[0]} ></Details>
             </div>
         )
     }
 }
+const wrapWithConnect = connect();
+export default wrapWithConnect(Posts);
 
