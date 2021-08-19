@@ -5,7 +5,7 @@ import Picker from './Picker'
 import Posts from './Posts'
 import { Post } from '../models/Post'
 import { NewsState } from '../reducers/index'
-import {Button} from 'antd'
+import { Button, Space } from 'antd'
 export type Props = {
     selectedReddit: number,
     isFetching: boolean,
@@ -38,16 +38,16 @@ class News extends React.Component<Props, NewsState> {
         return (
             <div>
                 <Picker value={selectedReddit} onChange={this.handleChange} options={['react', 'redux']} />
-                <p>
-                    {lastUpdated && <span>Last updated at {new Date(lastUpdated).toLocaleTimeString()}.</span>}
+                <Space>
+                    {<span>Last updated at {new Date().toLocaleTimeString()}.</span>}
                     {
                         !isFetching && (
-                            <Button  type='primary' onClick={this.handleRefreshClick} >
+                            <Button type='primary' onClick={this.handleRefreshClick} >
                                 Refresh
                             </Button>
                         )
                     }
-                </p>
+                </Space>
                 {
                     isFetching && <h2>正在加载...</h2>}
                 {

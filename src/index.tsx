@@ -20,8 +20,6 @@ export type AppThunk<ReturnType = void> = ThunkAction<
     Action<string>
 >;
 
-
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
