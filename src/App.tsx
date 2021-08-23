@@ -4,7 +4,7 @@ import { UserOutlined, LaptopOutlined, NotificationOutlined, HomeFilled, HomeTwo
 import News from './components/News'
 import Clock from './components/Clock/index'
 import './App.css';
-import { useSetInterval } from  './hooks';
+import { useSetInterval } from './hooks';
 import { of } from 'rxjs'
 import { Button, Tag, Space } from 'antd'
 import 'antd/dist/antd.css'
@@ -80,6 +80,9 @@ function App() {
                         <Layout>
                             <Clock
                                 size={100}
+                                renderNumbers={true}
+                                renderMinuteHand={true}
+                                renderSecondHand={true}
                                 value={value}
                             />
                             <b>{value.toLocaleString()}</b>
