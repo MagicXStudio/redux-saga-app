@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.less';
 import App from './App';
 import { ThunkAction, Action } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';

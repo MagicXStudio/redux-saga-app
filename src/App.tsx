@@ -72,7 +72,9 @@ function App() {
                         <Layout>
                             <img src={logo} className="App-logo" alt="logo" />
                             <Space>
-                                <Tag>Learn </Tag>
+                                <Tag >
+                                    <span className="learn">Learn </span>
+                                </Tag>
                                 <a
                                     className="App-link"
                                     href="https://reactjs.org/"
