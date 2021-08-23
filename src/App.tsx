@@ -2,15 +2,23 @@ import logo from './logo.svg';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import { UserOutlined, LaptopOutlined, NotificationOutlined, HomeFilled, HomeTwoTone } from '@ant-design/icons';
 import News from './components/News'
+import Clock from './components/Clock/index'
 import './App.css';
+import { useSetInterval } from  './hooks';
 import { of } from 'rxjs'
 import { Button, Tag, Space } from 'antd'
 import 'antd/dist/antd.css'
+import React from 'react';
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
 function App() {
+    const [value, onChange] = React.useState(new Date());
+    useSetInterval(() => {
+        const now = new Date();
+        onChange(now);
+    }, 1000);
     return (
         <Layout>
             <Header className="header">
@@ -70,11 +78,16 @@ function App() {
                         }}
                     >
                         <Layout>
-                            <img src={logo} className="App-logo" alt="logo" />
+                            <Clock
+                                size={100}
+                                value={value}
+                            />
+                            <b>{value.toLocaleString()}</b>
                             <Space>
-                                <Tag >
+                                <Space >
                                     <span className="learn">Learn </span>
-                                </Tag>
+                                    <img src={logo} className="App-logo" alt="logo" />
+                                </Space>
                                 <a
                                     className="App-link"
                                     href="https://reactjs.org/"
