@@ -1,9 +1,12 @@
-import { Button } from 'antd'
+import { Button,Tag } from 'antd'
+import { useToggle } from "ahooks";
 import News from '../components/News'
 const Docs = () => {
+    const [state, { toggle }] = useToggle();
     return (<div >
+        <Tag>useToggle : {String(state)}</Tag>
+        <Button type='primary' onClick={() => toggle()}>Docs Toggle</Button>
         <News />
-        <Button type='primary'>Docs</Button>
     </div>);
 }
 export default Docs;
