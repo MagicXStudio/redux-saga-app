@@ -1,7 +1,7 @@
 ﻿import * as React from 'react'
 import { Post } from '../models/Post'
 import { connect } from 'react-redux'
-import { Tag, Table, Space, Button } from 'antd'
+import { Tag, Table, Space, Button, Card } from 'antd'
 import Details from './Details'
 type Props = {
     posts: Array<Post>,
@@ -60,10 +60,10 @@ class Posts extends React.Component<Props, State> {
     }
     render() {
         return (
-            <div>
+            <Card>
                 <Table dataSource={this.props.posts} columns={columns} rowKey="id" />;
                 <Details item={this.props.posts[0]} ></Details>
-            </div>
+            </Card>
         )
     }
 }

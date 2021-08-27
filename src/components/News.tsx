@@ -1,11 +1,11 @@
 ﻿import * as React from 'react'
 import { connect } from 'react-redux'
-import { selectReddit, invalidateReddit } from '../actions'
+import { selectReddit, invalidateReddit, getItems } from '../actions'
 import Picker from './Picker'
 import Posts from './Posts'
 import { Post } from '../models/Post'
 import { NewsState } from '../reducers/index'
-import { Button, Space } from 'antd'
+import { Button, Space, Card } from 'antd'
 export type Props = {
     selectedReddit: number,
     isFetching: boolean,
@@ -19,11 +19,16 @@ class News extends React.Component<Props, NewsState> {
         super(props)
         this.handleChange = this.handleChange.bind(this)
         this.handleRefreshClick = this.handleRefreshClick.bind(this)
+        this.handleItemsClick = this.handleItemsClick.bind(this);
     }
 
     handleChange(nextReddit: number) {
         let action = selectReddit(nextReddit);
         this.props.dispatch(action)
+    }
+    handleItemsClick() {
+        let actiion = getItems('hooks', []);
+        this.props.dispatch(actiion);
     }
 
     handleRefreshClick() {
@@ -36,17 +41,20 @@ class News extends React.Component<Props, NewsState> {
     render() {
         const { selectedReddit, posts, isFetching, lastUpdated } = this.props
         return (
-            <div>
+            <Card>
                 <Picker value={selectedReddit} onChange={this.handleChange} options={['react', 'redux']} />
                 <Space>
-                    {<span>Last updated at {new Date().toLocaleTimeString()}.</span>}
+                    {<span>最近更新时间： {new Date().toLocaleTimeString()}.</span>}
                     {
                         !isFetching && (
                             <Button type='primary' onClick={this.handleRefreshClick} >
-                                Refresh
+                                刷新
                             </Button>
                         )
                     }
+                    <Button type='primary' onClick={this.handleItemsClick} >
+                        Items
+                    </Button>
                 </Space>
                 {
                     isFetching && <h2>正在加载...</h2>}
@@ -59,7 +67,7 @@ class News extends React.Component<Props, NewsState> {
                         </div>
                     )
                 }
-            </div>
+            </Card>
         )
     }
 }

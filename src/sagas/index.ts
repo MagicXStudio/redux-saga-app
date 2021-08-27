@@ -3,6 +3,7 @@ import * as actions from '../actions'
 import { Post } from '../models/Post'
 import { INVALIDATE_REDDIT, SELECT_REDDIT } from '../actions/constants'
 import { selectedRedditSelector, postsByRedditSelector } from '../reducers/selectors'
+import * as settings from "../data/settings.json";
 
 export function fetchPostsApi(reddit: number) {
     return fetch(`https://eztv.re/api/get-torrents?limit=100&page=1`)
@@ -13,8 +14,12 @@ export function fetchPostsApi(reddit: number) {
 export function* fetchPosts(reddit: number) {
     yield put(actions.requestPosts(reddit))
     const posts: Array<Post> = yield call(fetchPostsApi, reddit);
-    const children: Array<[string, string]> = [["65", "A"], ["97", "B"]];
     yield put(actions.receivePosts(reddit, posts, 2))
+}
+export function* getItems(type: string) {
+    const children: Array<[string, string]> = [["65", "A"], ["97", "B"]];
+    let lessons: string[] = settings.lessons;
+    yield put(actions.getItems(type, lessons))
 }
 
 export function* invalidateReddit() {
@@ -37,6 +42,7 @@ export function* nextRedditChange() {
 
 export function* startup() {
     const selectedReddit: number = yield select(selectedRedditSelector)
+    yield fork(getItems, 'hooks');
     yield fork(fetchPosts, selectedReddit)
 }
 

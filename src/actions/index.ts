@@ -4,11 +4,14 @@ import {
     REQUEST_POSTS,
     RECEIVE_POSTS,
     SELECT_REDDIT,
-    INVALIDATE_REDDIT
+    INVALIDATE_REDDIT,
+    GET_ITEMS
 } from './constants';
 
 
 export const selectReddit = (reddit: number) => action(SELECT_REDDIT, reddit);
+
+export const getItems = (type: string, items: string[]) => action(GET_ITEMS, type, items);
 
 export const invalidateReddit = (reddit: number) => action(INVALIDATE_REDDIT, reddit);
 

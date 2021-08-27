@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
-import { SELECT_REDDIT, REQUEST_POSTS, RECEIVE_POSTS } from '../actions/constants'
+import { SELECT_REDDIT, REQUEST_POSTS, RECEIVE_POSTS, GET_ITEMS } from '../actions/constants'
 import * as PostActions from '../actions/index'
 import { ActionType } from 'typesafe-actions';
 import { Post } from '../models/Post'
 
 export type PostAction = ActionType<typeof PostActions> & { reddit: string };
 
-export interface NewsObject  {
+export interface NewsObject {
     isFetching: false,
     lastUpdated: number,
     items: Array<Post>
@@ -33,6 +33,16 @@ function selectedReddit(state = 'reactjs', action: PostAction) {
     }
 }
 
+function getItems(state = 'hooks', action: PostAction) {
+    console.log(state);
+    switch (action.type) {
+        case GET_ITEMS:
+            return action.payload
+        default:
+            return state
+    }
+}
+
 
 function posts(state = initialState, action: PostAction) {
     console.log(action);
@@ -53,7 +63,6 @@ function posts(state = initialState, action: PostAction) {
 }
 
 function postsByReddit(state = initialState, action: PostAction) {
-    console.log(state);
     switch (action.type) {
         case REQUEST_POSTS:
         case RECEIVE_POSTS:
@@ -67,7 +76,8 @@ function postsByReddit(state = initialState, action: PostAction) {
 const rootReducer = combineReducers({
     selectedReddit,
     postsByReddit,
-    posts
+    posts,
+    getItems
 })
 
 export default rootReducer
