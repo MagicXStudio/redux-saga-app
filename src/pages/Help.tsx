@@ -1,10 +1,17 @@
-import { Button, Tag, Space } from 'antd'
+import { Button, Tag, Space, Card, Modal } from 'antd'
+import { useSize, useTitle } from 'ahooks'
 import { of } from 'rxjs'
+import React from 'react';
 const Help = () => {
-    return (<div >
+    const size = useSize(() => window.document.body);
+    let title = `width:${size.width} height:${size.height}`
+    let [visible, setVisible] = React.useState(false);
+    let [value, setValue] = React.useState<number>(2);
+    useTitle(title);
+    return (<Card >
         <Space>
             <Space >
-                <span className="learn">Learn </span>
+                <Tag className="learn">{title}</Tag>
             </Space>
             <a
                 className="App-link"
@@ -40,13 +47,21 @@ const Help = () => {
             >
                 React Redux
           </a>
+            <Modal visible={visible} closable={true} onCancel={(e) => { setVisible(false); }} onOk={() => { setVisible(false); }}>
+                <Tag>{value}</Tag>
+            </Modal>
             <Button type='primary' onClick={() => {
-                let x = of(123);
-                console.log(x);
+                let x = of<number>(value);
+                x.pipe().subscribe(t => {
+                    let v = Math.pow(t, 2);
+                    setValue(v);
+                    setVisible(true);
+                });
             }}>hello rxjs</Button>
         </Space>
-
-        <Button type='primary'>Help</Button>
-    </div>);
+        <Button type='primary' onClick={() => {
+            setVisible(true);
+        }}>Help</Button>
+    </Card>);
 }
 export default Help;
