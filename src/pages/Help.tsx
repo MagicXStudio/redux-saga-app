@@ -2,6 +2,7 @@ import { Button, Tag, Space, Card, Modal } from 'antd'
 import { useSize, useTitle } from 'ahooks'
 import { of } from 'rxjs'
 import React from 'react';
+import IM from '../components/Push/Index'
 const Help = () => {
     const size = useSize(() => window.document.body);
     let title = `width:${size.width} height:${size.height}`
@@ -9,7 +10,7 @@ const Help = () => {
     let [value, setValue] = React.useState<number>(2);
     useTitle(title);
     return (<Card >
-        <Space>
+        <Card>
             <Space >
                 <Tag className="learn">{title}</Tag>
             </Space>
@@ -29,7 +30,8 @@ const Help = () => {
                 rel="noopener noreferrer"
             >
                 Redux
-          </a>
+                
+            </a>
             <span>, </span>
             <a
                 className="App-link"
@@ -58,10 +60,13 @@ const Help = () => {
                     setVisible(true);
                 });
             }}>hello rxjs</Button>
-        </Space>
-        <Button type='primary' onClick={() => {
-            setVisible(true);
-        }}>Help</Button>
+        </Card>
+        <Card>
+            <Button type='primary' onClick={() => {
+                setVisible(true);
+            }}>Help</Button>
+            <IM></IM>
+        </Card>
     </Card>);
 }
 export default Help;
