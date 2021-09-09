@@ -96,7 +96,6 @@ export default function RXWebSocket(socketUrl: string, options: Options = {}): R
         if (websocketRef.current) {
 
         }
-
         try {
             websocketRef.current = webSocket({
                 url: socketUrl,
@@ -122,7 +121,6 @@ export default function RXWebSocket(socketUrl: string, options: Options = {}): R
                     console.info('complete')
                 }
             );
-
             websocketRef.current.error = (error) => {
                 reconnect();
                 onError && onError(error);

@@ -4,9 +4,11 @@ import { of } from 'rxjs'
 import React from 'react';
 import { useRef, useMemo } from 'react';
 import RXWebSocket from '../components/Push/RXWebSocket'
+import { CommandMsg } from '../models/CommandMsg';
 const Help = () => {
     const size = useSize(() => window.document.body);
     let title = `width:${size.width} height:${size.height}`
+    useTitle(title);
     let [visible, setVisible] = React.useState(false);
     let [value, setValue] = React.useState<number>(2);
 
@@ -18,7 +20,7 @@ const Help = () => {
         latestMessage,
     ]);
 
-    useTitle(title);
+
     return (<Card >
         <Card>
             <Space >
@@ -74,7 +76,17 @@ const Help = () => {
         <Card>
 
             <Button
-                onClick={() => sendMessage && sendMessage(`${Date.now()}`)}
+                onClick={() => {
+                    let cmd: CommandMsg = {
+                        id: 2,
+                        protocol: 'json',
+                        type: 1,
+                        version: 1,
+                        target: 'MsgHandler',
+                        arguments: []
+                    };
+                    sendMessage!(cmd);
+                }}
                 style={{ marginRight: 8 }}
             >
                 ✉️ 发送
