@@ -34,20 +34,26 @@ const IM = function () {
         }
     });
     const handshake = () => {
-        let handshakeCmd = {
+        let cmd: CommandMsg = {
             protocol: 'json',
-            version: 1
+            id: 2,
+            type: 1,
+            version: 1,
+            target: 'handshake',
+            arguments: []
         };
-        subject.next(handshakeCmd);
+        subject.next(cmd);
     }
 
     const heartbeat = () => {
         timer(5 * 1000, 1000 * 20).subscribe(count => {
             let cmd: CommandMsg = {
+                protocol: 'json',
                 id: 2,
                 type: 1,
+                version: 1,
                 target: 'Hearbeat',
-                arguments: [count.toString()]
+                arguments: []
             };
             subject.next(cmd);
         });
@@ -57,6 +63,8 @@ const IM = function () {
         let encode = base64.encode(JSON.stringify(obj));
         let cmd: CommandMsg = {
             id: 1,
+            protocol: 'json',
+            version: 1,
             type: 1,
             target: 'RequestHandler',
             arguments: [encode]
