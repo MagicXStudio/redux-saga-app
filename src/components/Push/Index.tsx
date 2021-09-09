@@ -79,6 +79,7 @@ const IM = function () {
             send("helllo");
         }}>发送消息</Button>
         <Button>实时消息推送</Button>
+        <Space>实时消息推送</Space>
     </Card>);
 };
 

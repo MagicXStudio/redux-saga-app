@@ -7,6 +7,7 @@ import 'antd/dist/antd.css'
 import Home from './pages/Home'
 import Docs from './pages/Docs'
 import Help from './pages/Help'
+import Hooks from './pages/ahooks'
 import React from 'react';
 
 const { SubMenu } = Menu;
@@ -24,6 +25,7 @@ function App() {
                         <Menu.Item key="1" icon={<HomeTwoTone />}><Link to="/">Home</Link></Menu.Item>
                         <Menu.Item key="2"><Link to="/Docs">Docs</Link></Menu.Item>
                         <Menu.Item key="3"><Link to="/Help">Help</Link></Menu.Item>
+                        <Menu.Item key="4"><Link to="/ahooks">ahooks</Link></Menu.Item>
                     </Menu>
                 </Header>
                 <Layout>
@@ -85,6 +87,9 @@ function App() {
                                     </Route>
                                     <Route path="/help">
                                         <Help />
+                                    </Route>
+                                    <Route path="/ahooks">
+                                        <Hooks />
                                     </Route>
                                 </Switch>
                             </Layout>
