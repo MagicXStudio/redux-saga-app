@@ -3,6 +3,7 @@ import { Layout, Menu, Breadcrumb } from 'antd';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import { UserOutlined, LaptopOutlined, NotificationOutlined, HomeFilled, HomeTwoTone } from '@ant-design/icons';
 import './App.css';
+import './bulma.css';
 import 'antd/dist/antd.css'
 import Home from './pages/Home'
 import Docs from './pages/Docs'
