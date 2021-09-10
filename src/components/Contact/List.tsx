@@ -139,10 +139,11 @@ const Contacts = () => {
             <Drawer visible={visible}>
                 <Card>
                     <ContactForm
-                        Name={contact?.Name}
+                        name={contact?.name}
                         Address={contact?.Address}
                         Age={contact?.Age}
-                        Avatar={contact?.Avatar}
+                        avatarUrl={contact?.avatarUrl}
+                        motto={contact?.motto}
                         Gender={contact?.Gender}
                         Roles={contact?.Roles}
                         Hobby={contact?.Hobby}

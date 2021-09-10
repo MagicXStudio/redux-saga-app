@@ -1,8 +1,9 @@
 export type Contact = {
     Gender?: Gender,
-    Name?: string,
+    name?: string,
+    motto?: string,
     Age?: number,
-    Avatar?: string,
+    avatarUrl?: string,
     Hobby?: Partial<string>,
     Address?: Partial<string>,
     Roles?: string[]

@@ -8,6 +8,8 @@ import 'antd/dist/antd.css'
 import Home from './pages/Home'
 import Docs from './pages/Docs'
 import Help from './pages/Help'
+import Contact from './pages/Contact'
+import Dashboard from './pages/Dashboard'
 import Hooks from './pages/ahooks'
 import React from 'react';
 
@@ -27,6 +29,8 @@ function App() {
                         <Menu.Item key="2"><Link to="/Docs">Docs</Link></Menu.Item>
                         <Menu.Item key="3"><Link to="/Help">Help</Link></Menu.Item>
                         <Menu.Item key="4"><Link to="/ahooks">ahooks</Link></Menu.Item>
+                        <Menu.Item key="5"><Link to="/Contact">Contact</Link></Menu.Item>
+                        <Menu.Item key="6"><Link to="/Dashboard">Dashboard</Link></Menu.Item>
                     </Menu>
                 </Header>
                 <Layout>
@@ -91,6 +95,12 @@ function App() {
                                     </Route>
                                     <Route path="/ahooks">
                                         <Hooks />
+                                    </Route>
+                                    <Route path="/Contact">
+                                        <Contact />
+                                    </Route>
+                                    <Route path="/Dashboard">
+                                        <Dashboard />
                                     </Route>
                                 </Switch>
                             </Layout>
