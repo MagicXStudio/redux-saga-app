@@ -3,7 +3,7 @@ import { ajax } from 'rxjs/ajax';
 import { SmileOutlined } from '@ant-design/icons';
 import { map } from 'rxjs/operators';
 import ContactForm from './Form'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useRequest } from 'ahooks'
 import { Contact } from "../../models/Contact";
 import { PagedResult } from "../../models/PagedResult";
@@ -28,6 +28,7 @@ function getContacts(name: string): Promise<{ success: boolean, result: PagedRes
 }
 
 const Contacts = () => {
+    const textRef = useRef<HTMLInputElement>(null);
     const [currentRow, setCurrentRow] = useState<Contact>();
     const [visible, setVisible] = useState(false);
     const [modalVisible, setModalVisible] = useState(false);
@@ -143,10 +144,12 @@ const Contacts = () => {
             },
         });
     };
+
     return (
         <div>
             <input
                 onCopy={(e) => false}
+                ref={textRef}
                 onPaste={(e) => false}
                 onCut={(e) => false}
                 onChange={(e) => setState(e.target.value)}
@@ -154,7 +157,10 @@ const Contacts = () => {
                 placeholder="请输入名称"
                 style={{ width: 240, marginRight: 16 }}
             />
-            <Button type="primary" onClick={() => run(state)}>搜索...</Button>
+            <Button type="primary" onClick={() => {
+                textRef?.current?.focus();
+                run(state)
+            }}>搜索...</Button>
             <Table columns={columns} dataSource={pagedResult?.items} rowKey="id">
             </Table>
             <Drawer
