@@ -1,12 +1,14 @@
 export type Contact = {
-    Gender?: Gender,
+    id?: number,
+    gender?: Gender,
     name?: string,
+    phone?: string,
     motto?: string,
-    Age?: number,
+    age?: number,
     avatarUrl?: string,
-    Hobby?: Partial<string>,
-    Address?: Partial<string>,
-    Roles?: string[]
+    hobby?: Partial<string>,
+    address?: Partial<string>,
+    roles?: string[]
 }
 
 enum Gender {
