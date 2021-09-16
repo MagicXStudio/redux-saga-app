@@ -11,6 +11,7 @@ import Help from './pages/Help'
 import Contact from './pages/Contact'
 import Dashboard from './pages/Dashboard'
 import Hooks from './pages/ahooks'
+import CSS3 from './pages/CSS3'
 import React from 'react';
 
 const { SubMenu } = Menu;
@@ -31,6 +32,7 @@ function App() {
                         <Menu.Item key="4"><Link to="/ahooks">ahooks</Link></Menu.Item>
                         <Menu.Item key="5"><Link to="/Contact">Contact</Link></Menu.Item>
                         <Menu.Item key="6"><Link to="/Dashboard">Dashboard</Link></Menu.Item>
+                        <Menu.Item key="7"><Link to="/CSS3">CSS3</Link></Menu.Item>
                     </Menu>
                 </Header>
                 <Layout>
@@ -101,6 +103,9 @@ function App() {
                                     </Route>
                                     <Route path="/Dashboard">
                                         <Dashboard />
+                                    </Route>
+                                    <Route path="/CSS3">
+                                        <CSS3 />
                                     </Route>
                                 </Switch>
                             </Layout>
