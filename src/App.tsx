@@ -10,6 +10,7 @@ import Docs from './pages/Docs'
 import Help from './pages/Help'
 import Contact from './pages/Contact'
 import Dashboard from './pages/Dashboard'
+import Sudoku from './pages/Sudoku'
 import Hooks from './pages/ahooks'
 import CSS3 from './pages/CSS3'
 import React from 'react';
@@ -33,6 +34,7 @@ function App() {
                         <Menu.Item key="5"><Link to="/Contact">Contact</Link></Menu.Item>
                         <Menu.Item key="6"><Link to="/Dashboard">Dashboard</Link></Menu.Item>
                         <Menu.Item key="7"><Link to="/CSS3">CSS3</Link></Menu.Item>
+                        <Menu.Item key="8"><Link to="/Sudoku">Sudoku</Link></Menu.Item>
                     </Menu>
                 </Header>
                 <Layout>
@@ -106,6 +108,9 @@ function App() {
                                     </Route>
                                     <Route path="/CSS3">
                                         <CSS3 />
+                                    </Route>
+                                    <Route path="/Sudoku">
+                                        <Sudoku />
                                     </Route>
                                 </Switch>
                             </Layout>
