@@ -14,12 +14,16 @@ import Sudoku from './pages/Sudoku'
 import Hooks from './pages/ahooks'
 import CSS3 from './pages/CSS3'
 import React from 'react';
+import mergeSort from './utils/array-sort'
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
 function App() {
     const [time, setTime] = React.useState(new Date());
+    const [numbers, setNumbers] = React.useState([11, 2, 6, 7, 8, 3, 4, 66, 23, 96, 47]);
+    const nums = mergeSort(numbers, (x, y) => x > y);
+   
     console.log(time);
     return (
         <Layout>
