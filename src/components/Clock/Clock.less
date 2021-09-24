@@ -1,62 +1,76 @@
 .react-clock {
-  display: block;
-  position: relative;
+    display: block;
+    position: relative;
 
-  &, & *, & *:before, & *:after {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-
-  &__face {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-
-    border: 1px solid black;
-    border-radius: 50%;
-  }
-
-  &__hand {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    right: 50%;
-
-    &__body {
-      position: absolute;
-      background-color: black;
-      transform: translateX(-50%);
+    &, & *, & *:before, & *:after {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
     }
-  }
 
-  &__mark {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    right: 50%;
+    &__face {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-image: linear-gradient( 45deg,#30a9eb, #2ea9ed);
+        border: 1px solid red;
+        box-shadow: inset 1px 2px 3px 4px #082a77;
+        border-radius: 50%;
+    }
 
-    &__body {
-      position: absolute;
-      background-color: black;
-      transform: translateX(-50%);
+    &__text {
+        top: 10px;
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        color: blue;
+        box-shadow: rgb(176 25 10) 0.5em 0.5em 4em;
+        border: 1px solid red;
     }
-    
-    &__number {
-      position: absolute;
-      left: -40px;
-      width: 80px;
-      text-align: center;
-    }
-  }
 
-  &__second-hand {
-    &__body {
-      background-color: red;
+    &__hand {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        right: 50%;
+
+        &__body {
+            position: absolute;
+            background-color: yellow;
+            box-shadow: rgb(76 25 50) 0.5em 0.5em 4em;
+            transform: translateX(-50%);
+        }
     }
-  }
+
+    &__mark {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        right: 50%;
+
+        &__body {
+            position: absolute;
+            background-color: blue;
+            box-shadow: rgb(76 255 0) 0.5em 0.5em 4em;
+            transform: translateX(-50%);
+        }
+
+        &__number {
+            position: absolute;
+            left: -40px;
+            width: 80px;
+            text-align: center;
+        }
+    }
+
+    &__second-hand {
+        &__body {
+            background-color: red;
+            box-shadow: blue 0.5em 0.5em 4em;
+        }
+    }
 }

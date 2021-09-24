@@ -87,6 +87,7 @@ export default function Clock({
             <div className="react-clock__face">
                 {renderMinuteMarksFn()}
                 {renderHourMarksFn()}
+                <b className="react-clock__text">{value.toLocaleString()}</b>
             </div>
         );
     }

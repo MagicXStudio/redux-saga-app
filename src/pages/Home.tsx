@@ -9,13 +9,19 @@ const Home = () => {
     }, 1000);
     return (<div>
         <Clock
-            size={120}
+            size={200}
             renderNumbers={true}
             renderMinuteHand={true}
             renderSecondHand={true}
             value={value}
         />
-        <b>{value.toLocaleString()}</b>
+        <Clock
+            size={300}
+            renderNumbers={true}
+            renderMinuteHand={true}
+            renderSecondHand={true}
+            value={value}
+        />
     </div>);
 }
 
